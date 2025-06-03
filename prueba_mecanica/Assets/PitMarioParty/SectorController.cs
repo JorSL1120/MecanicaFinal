@@ -38,7 +38,7 @@ public class SectorController : MonoBehaviour
 
     public TextMeshProUGUI countdownText;
     public TextMeshProUGUI roundText;
-    public float countdownDuration = 5f;
+    public float countdownDuration = 8f;
 
 
     void Start()
@@ -170,10 +170,20 @@ public class SectorController : MonoBehaviour
             yield return new WaitForSeconds(2f);
             roundText.gameObject.SetActive(false);
 
+            float initialRepeatTime = Random.Range(0.1f, 0.3f);
+            repeatTime = initialRepeatTime;
+
             float currentTime = countdownDuration;
+
             while (currentTime > 0)
             {
                 countdownText.text = currentTime.ToString("0");
+
+                if (currentTime <= 2f)
+                {
+                    repeatTime = 0.6f;
+                }
+
                 yield return new WaitForSeconds(1f);
                 currentTime--;
             }
