@@ -484,7 +484,7 @@ GameObject:
   - component: {fileID: 1269889376}
   - component: {fileID: 1269889375}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Start_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -534,7 +534,7 @@ MonoBehaviour:
     m_NormalColor: {r: 0.31132078, g: 0.026125463, b: 0, a: 1}
     m_HighlightedColor: {r: 0.08235294, g: 0.2627451, b: 0, a: 1}
     m_PressedColor: {r: 0.10980392, g: 0.16078432, b: 0.05490196, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.15686275, g: 0.1882353, b: 0.10980392, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1

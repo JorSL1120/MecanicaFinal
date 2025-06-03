@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Animations;
 using UnityEngine;
+using TMPro;
+
 
 public class SectorController : MonoBehaviour
 {
@@ -34,8 +36,15 @@ public class SectorController : MonoBehaviour
     public MovNPC ScriptNPC4;
 
 
+    public TextMeshProUGUI countdownText;
+    public TextMeshProUGUI roundText;
+    public float countdownDuration = 5f;
+
+
     void Start()
     {
+        StartCoroutine(CountdownBeforeChoosing());
+
         selectionActive = true;
         foreach(Transform child in transform)
         {
@@ -129,7 +138,7 @@ public class SectorController : MonoBehaviour
         Enemy4.useGravity = false;
         Enemy5.useGravity = false;
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
 
         ScriptPlayer1.Speed = 5f;
         ScriptPlayer2.Speed = 5f;
@@ -146,5 +155,35 @@ public class SectorController : MonoBehaviour
         Enemy3.useGravity = true;
         Enemy4.useGravity = true;
         Enemy5.useGravity = true;
+    }
+
+    private IEnumerator CountdownBeforeChoosing()
+    {
+        int repeatCount = 3;
+
+        for (int i = 0; i < repeatCount; i++)
+        {
+            int roundNumber = i + 1;
+
+            roundText.text = "RONDA " + roundNumber;
+            roundText.gameObject.SetActive(true);
+            yield return new WaitForSeconds(2f);
+            roundText.gameObject.SetActive(false);
+
+            float currentTime = countdownDuration;
+            while (currentTime > 0)
+            {
+                countdownText.text = currentTime.ToString("0");
+                yield return new WaitForSeconds(1f);
+                currentTime--;
+            }
+
+            countdownText.text = "0";
+            chooseSector = true;
+
+            yield return new WaitForSeconds(1f);
+        }
+
+        countdownText.text = "";
     }
 }
