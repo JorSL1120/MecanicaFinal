@@ -92,7 +92,7 @@ public class SectorController : MonoBehaviour
         for (int i = 0; i < sectors.Count; i++)
         {
             if (i == pairIndex * 2 || i == pairIndex * 2 + 1)
-                sectors[i].GetComponent<MeshRenderer>().material.color = Color.yellow;
+                sectors[i].GetComponent<MeshRenderer>().material.color = Color.red + Color.white;
             else
                 sectors[i].GetComponent<MeshRenderer>().material.color = originalColor;
         }
